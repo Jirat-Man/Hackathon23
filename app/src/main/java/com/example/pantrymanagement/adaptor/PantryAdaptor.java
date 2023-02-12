@@ -37,8 +37,8 @@ public class PantryAdaptor extends RecyclerView.Adapter<PantryAdaptor.PantryHold
     public void onBindViewHolder(@NonNull PantryHolder holder, int position) {
         PantryEntity currentItem = pantryEntities.get(position);
         holder.mItemName.setText(currentItem.getName());
-        holder.mDayTillExpiryView.setText(String.valueOf(currentItem.getDays_to_expiry()));
-        holder.mExpiryDateView.setText(String.valueOf(currentItem.getExpiryDate()));
+        holder.mDayTillExpiryView.setText(String.valueOf(currentItem.getDays_to_expiry()) + " days till expiry");
+        holder.mExpiryDateView.setText("Expiry Date: " + String.valueOf(currentItem.getExpiryDate()));
         holder.mCommentView.setText(String.valueOf(currentItem.getComment()));
     }
 

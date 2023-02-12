@@ -1,25 +1,34 @@
 package com.example.pantrymanagement;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.pantrymanagement.adaptor.PantryAdaptor;
 
 public class PantryActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_ID = 1;
+    private static final String CHANNEL_ID = "CHANNEL_ID";
     ViewModel mViewModel;
     PantryAdaptor adaptor;
 
@@ -45,6 +54,8 @@ public class PantryActivity extends AppCompatActivity {
         mViewModel = new ViewModelProvider(this).get(ViewModel.class);
         //set all the card views to the runEntities in the database
         mViewModel.getAllItem().observe(this, runEntities -> adaptor.setPantryEntities(runEntities));
+
+
 
         //Slide to delete item from the database
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
@@ -76,7 +87,13 @@ public class PantryActivity extends AppCompatActivity {
         adaptor.setUpListener(runEntity -> {
 
         });
+
+        if(getIntent().hasExtra("WHATSHOULDIGET")){
+            Toast.makeText(this, "You have items that are expiring soon!", Toast.LENGTH_SHORT).show();
+            mViewModel.getItemByExpiry().observe(this, pantryEntities -> adaptor.setPantryEntities(pantryEntities));
+        }
     }
+
 
 
     //inflate the menu with items

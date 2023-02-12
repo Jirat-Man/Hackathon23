@@ -17,27 +17,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_button"
-            android:layout_margin="15dp"
+            android:layout_marginTop="69dp"
             android:backgroundTint="#FFE6D4"
             app:srcCompat="@mipmap/pantry_foreground" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/pantry"
+            android:textAlignment="center" />
 
         <ImageButton
             android:id="@+id/ScanReceiptButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_button"
-            android:layout_margin="15dp"
+            android:layout_marginTop="69dp"
             android:backgroundTint="#FFE6D4"
             app:srcCompat="@mipmap/list_foreground"/>
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/scan_your_shopping_receipt"
+            android:textAlignment="center" />
+
         <ImageButton
-            android:id="@+id/ShoppingList"
+            android:id="@+id/what_should_i_have"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_button"
             android:backgroundTint="#FFE6D4"
             app:srcCompat="@mipmap/fruit_foreground"
-            android:layout_margin="15dp"
+            android:layout_marginTop="69dp"
             />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="What should I eat first?"
+            android:textAlignment="center" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

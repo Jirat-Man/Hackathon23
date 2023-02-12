@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton PantryButton;
     ImageButton ScanReceiptButton;
+    ImageButton WhatShouldIGetButton;
     ViewModel mViewModel;
     String[] itemsName;
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         String purchaseDateString = String.valueOf(purchaseDate);
 
         for(int i = 0; i < itemsName.length; i++){
-            int daysTillExpiry = predictExpiryDate(itemsName[0]);
+            int daysTillExpiry = predictExpiryDate(itemsName[i]);
             String expiryDate = getExpiryDate(purchaseDate, daysTillExpiry);
             PantryEntity entity = new PantryEntity(itemsName[i], expiryDate,"", null, 23, 34,purchaseDateString, 23, daysTillExpiry);
             mViewModel.Insert(entity);
@@ -115,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         initWidget();
 
         PantryButton.setOnClickListener(v -> {
-            Intent journey = new Intent(MainActivity.this, PantryActivity.class);
-            startActivity(journey);
+            Intent intent = new Intent(MainActivity.this, PantryActivity.class);
+            startActivity(intent);
         });
 
         if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -132,11 +133,19 @@ public class MainActivity extends AppCompatActivity {
 
         mViewModel = new ViewModelProvider(this).get(ViewModel.class);
 
+        WhatShouldIGetButton.setOnClickListener(v ->{
+            Intent intent = new Intent(MainActivity.this, PantryActivity.class);
+            intent.putExtra("WHATSHOULDIGET", "WHATSHOULDIGET");
+            startActivity(intent);
+        });
+
+
     }
 
     private void initWidget() {
         PantryButton = findViewById(R.id.pantryButton);
         ScanReceiptButton = findViewById(R.id.ScanReceiptButton);
+        WhatShouldIGetButton = findViewById(R.id.what_should_i_have);
     }
 
 

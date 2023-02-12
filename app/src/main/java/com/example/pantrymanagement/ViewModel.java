@@ -47,4 +47,9 @@ public class ViewModel extends AndroidViewModel {
     }
 
     public void DeleteAll(){mRepository.DeleteAll();}
+
+    public LiveData<List<PantryEntity>> getItemByExpiry(){
+        this.mAllItem = mRepository.GetItemsByExpiryASC();
+        return mAllItem;
+    }
 }

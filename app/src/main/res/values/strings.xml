@@ -17,4 +17,8 @@
     <string name="delete_all_run">Delete all runs</string>
     <string name="confirm">Confrim</string>
     <string name="cancel">Cancel</string>
+    <string name="scan_your_shopping_receipt">Scan Your Shopping Receipt</string>
+    <string name="pantry">Pantry</string>
+    <string name="channel_name">channel_name</string>
+    <string name="channel_description">channel_description</string>
 </resources>

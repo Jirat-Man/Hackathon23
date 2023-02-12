@@ -29,7 +29,7 @@ public interface PantryDao {
     LiveData<List<PantryEntity>> getItemsByIdDesc();
 
     //select food expiry date 2 or less days away
-    @Query("Select * FROM pantry_item WHERE days_to_expiry <= 2")
+    @Query("Select * FROM pantry_item ORDER BY days_to_expiry ASC")
     LiveData<List<PantryEntity>>  getAlmostExpiredItem();
 
     //order food ordered by calories descending

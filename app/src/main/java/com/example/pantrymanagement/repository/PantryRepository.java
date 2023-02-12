@@ -46,8 +46,8 @@ public class PantryRepository {
         return mAllItems;
     }
 
-    public LiveData<List<PantryEntity>> GetItemsByCaloriesDESC() {
-        mAllItems = mPantryDao.getItemsByCaloriesDESC();
+    public LiveData<List<PantryEntity>> GetItemsByExpiryASC() {
+        mAllItems = mPantryDao.getAlmostExpiredItem();
         return mAllItems;
     }
 
