@@ -62,4 +62,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
 
+    //Google Vision
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 }

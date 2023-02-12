@@ -19,13 +19,13 @@
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageButton
-                android:id="@+id/shoppingListButton"
+                android:id="@+id/ScanReceiptButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageButton
-                android:id="@+id/imageButton9"
+                android:id="@+id/ShoppingList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_launcher_foreground" />

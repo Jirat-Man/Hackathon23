@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -67,5 +68,20 @@ public class PantryActivity extends AppCompatActivity {
                 builder.create().show();
             }
         }).attachToRecyclerView(recyclerView);
+
+        adaptor.setUpListener(runEntity -> {
+
+        });
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        UpdatePantry();
+    }
+
+    private void UpdatePantry() {
     }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +68,7 @@ public class PantryAdaptor extends RecyclerView.Adapter<PantryAdaptor.PantryHold
         private TextView mDayTillExpiryView;
         private TextView mExpiryDateView;
         private TextView mCommentView;
+        private NumberPicker mNumberPicker;
 
         public PantryHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +89,10 @@ public class PantryAdaptor extends RecyclerView.Adapter<PantryAdaptor.PantryHold
             mDayTillExpiryView = itemView.findViewById(R.id.dayTIllExpiry);
             mExpiryDateView = itemView.findViewById(R.id.ExpiryDate);
             mCommentView = itemView.findViewById(R.id.commentText);
+            mNumberPicker = itemView.findViewById(R.id.numberPicker);
+
+            mNumberPicker.setMinValue(1);
+            mNumberPicker.setMaxValue(10000);
         }
     }
 
