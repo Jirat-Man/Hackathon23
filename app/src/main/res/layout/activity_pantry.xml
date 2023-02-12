@@ -9,7 +9,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/white"
         tools:layout_editor_absoluteX="-31dp"
         tools:layout_editor_absoluteY="-304dp"
         tools:listitem="@layout/card_view_item" />

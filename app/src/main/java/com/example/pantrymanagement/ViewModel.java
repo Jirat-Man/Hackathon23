@@ -45,4 +45,6 @@ public class ViewModel extends AndroidViewModel {
     public void Delete(PantryEntity pantryEntity) {
         mRepository.Delete(pantryEntity);
     }
+
+    public void DeleteAll(){mRepository.DeleteAll();}
 }

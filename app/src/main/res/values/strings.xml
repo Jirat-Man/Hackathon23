@@ -12,4 +12,9 @@
     <string name="item_name">Item_Name</string>
     <string name="days_till_expiry_date">Days till expiry date</string>
     <string name="expiry_date">Expiry Date</string>
+    <string name="delete_all_items">Delete All Items</string>
+    <string name="confirm_delete_all_run">Are you sure you want to delete all runs</string>
+    <string name="delete_all_run">Delete all runs</string>
+    <string name="confirm">Confrim</string>
+    <string name="cancel">Cancel</string>
 </resources>

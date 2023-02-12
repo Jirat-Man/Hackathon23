@@ -1,9 +1,8 @@
 package com.example.pantrymanagement;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import static com.example.pantrymanagement.ConstantsExpiry.EXPIRY_DATE;
+import static com.example.pantrymanagement.ConstantsExpiry.ITEM;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -14,11 +13,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.util.SparseArray;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -31,9 +29,9 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     Uri uri;
     Bitmap bitmap;
     byte[] imageByte;
+
+    String ExpiryDate;
 
     private static final int REQUEST_CAMERA_CODE = 100;
 
@@ -66,7 +66,45 @@ public class MainActivity extends AppCompatActivity {
             }
 
             itemsName = stringBuilder.toString().split("\n");
+            addItemToDatabase(itemsName);
         }
+    }
+
+    private void addItemToDatabase(String[] itemsName) {
+        LocalDate purchaseDate = getTodayDate();
+        String purchaseDateString = String.valueOf(purchaseDate);
+
+        for(int i = 0; i < itemsName.length; i++){
+            int daysTillExpiry = predictExpiryDate(itemsName[0]);
+            String expiryDate = getExpiryDate(purchaseDate, daysTillExpiry);
+            PantryEntity entity = new PantryEntity(itemsName[i], expiryDate,"", null, 23, 34,purchaseDateString, 23, daysTillExpiry);
+            mViewModel.Insert(entity);
+        }
+    }
+
+    private String getExpiryDate(LocalDate purchaseDate, int daysTillExpiry) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return String.valueOf(purchaseDate.plusDays(daysTillExpiry));
+        }
+        return null;
+    }
+
+    private LocalDate getTodayDate() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return LocalDate.now();
+        }
+        return null;
+    }
+
+    private int predictExpiryDate(String s) {
+        int expireDays = 2;
+        for(int i = 0; i < ITEM.length; i++){
+            if(Objects.equals(ITEM[i], s)){
+                expireDays = EXPIRY_DATE[i];
+                break;
+            }
+        }
+        return expireDays;
     }
 
     @Override

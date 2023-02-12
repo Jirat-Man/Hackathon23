@@ -36,6 +36,11 @@ public class PantryRepository {
         PantryRoomDatabase.databaseWriteExecutor.execute(() -> mPantryDao.delete(pantryEntity));
     }
 
+    //notify runDao to Delete all runEntities
+    public void DeleteAll() {
+        PantryRoomDatabase.databaseWriteExecutor.execute(mPantryDao::deleteAll);
+    }
+
     public LiveData<List<PantryEntity>> GetAllItems() {
         mAllItems = mPantryDao.getItemsByIdDesc();
         return mAllItems;

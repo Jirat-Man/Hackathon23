@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.pantrymanagement.adaptor.PantryAdaptor;
@@ -75,6 +79,39 @@ public class PantryActivity extends AppCompatActivity {
     }
 
 
+    //inflate the menu with items
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //handle menu click events
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_all_items:
+                AlertDialog.Builder builder = new AlertDialog.Builder(PantryActivity.this);
+                builder.setMessage(R.string.confirm_delete_all_run)
+                        .setTitle(R.string.delete_all_run)
+                        .setPositiveButton(R.string.confirm, (dialog, id) -> {
+                            mViewModel.DeleteAll();
+                            Toast.makeText(PantryActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton(R.string.cancel, (dialog, id) -> {
+                            //do nothing
+                        });
+
+                // Create the AlertDialog object and return it
+                builder.create().show();
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     @Override
     public void onBackPressed() {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false"
+        >
+        <shape android:shape="oval">
+            <solid android:color="@color/white" />
+            <padding android:left="2dp" android:right="2dp" android:top="2dp" android:bottom="2dp" />
+        </shape>
+    </item>
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="oval">
+            <solid android:color="#C5E384" />
+        </shape>
+    </item>
+    <item android:right="5dp" android:top="5dp" android:left="5dp" android:bottom="5dp">
+        <rotate
+            android:fromDegrees="0"
+            android:toDegrees="0">
+            <shape android:shape="line">
+                <stroke android:width="10dp" android:color="#647C31" />
+
+            </shape>
+        </rotate>
+    </item>
+    <item android:right="5dp" android:top="5dp" android:left="5dp" android:bottom="5dp">
+        <rotate
+            android:fromDegrees="90"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="45">
+            <shape android:shape="line">
+                <stroke android:width="10dp" android:color="#647C31" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>
